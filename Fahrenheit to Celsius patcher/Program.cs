@@ -37,9 +37,9 @@ class FahrenheitCelsiusPatcher
 
             ILProcessor ilProcessor = methodBody.GetILProcessor();
 
-            // To convert from fahrenheit to celsius apply this formula: C = (F - 32) / 1.8
-            // After instruction 37 the first item on the stack is the fahrenheit  temperature
-            // Load in stack 32 to subtract from it, then load in stack 1.8 and divide the result with it
+            // Fahrenheit to Celsius conversion formula: C = (F - 32) / 1.8
+            // After instruction 37 the first item on the stack is the Fahrenheit temperature
+            // Push 32 on the stack, subtract it, then push 1.8 and divide the result by it
             ilProcessor.InsertAfter(37, Instruction.Create(OpCodes.Ldc_R4, 32f));
             ilProcessor.InsertAfter(38, Instruction.Create(OpCodes.Sub));
             ilProcessor.InsertAfter(39, Instruction.Create(OpCodes.Ldc_R4, 1.8f));
@@ -48,7 +48,7 @@ class FahrenheitCelsiusPatcher
             // Make a backup of original file
             File.Copy(assemblyPath, assemblyPath + ".old", true);
 
-            // Save changed to disc
+            // Save changes to disc
             moduleDefinition.Write();
 
             Console.Write("Assembly-CSharp.dll has been patched! A backup copy has been created in the same folder named Assembly-CSharp.dll.old");
