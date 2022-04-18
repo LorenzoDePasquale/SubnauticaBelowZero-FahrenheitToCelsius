@@ -15,7 +15,7 @@ At the start of the method there's a reference to the BodyTemperature component 
 
 ![SetValue](SetValue.png)
 
-The last instruction is the one that updates the temperature text, so that's the right place to convert the temperature value from Fahrenheit to Celsius (also note the IntStringChache class used to convert the temperature value to it's string representation; this way they avoid to instantiate a new string at every frame, by reusing the same string for the same number. Very smart!).
+The last instruction is the one that updates the temperature text, so that's the right place to convert the temperature value from Fahrenheit to Celsius (also note the IntStringChache class used to convert the temperature value to its string representation; this way they avoid to instantiate a new string at every frame, by reusing the same string for the same number. Very smart!).
 
 The formula for the conversion is C = (F - 32) / 1.8, so applying it in the last line is all we need to do.
 
